@@ -1,0 +1,60 @@
+-- CREATE TABLE users (
+--     user_id INT PRIMARY KEY AUTO_INCREMENT,
+--     username VARCHAR(50) UNIQUE NOT NULL,
+--     email VARCHAR(100) UNIQUE NOT NULL,
+--     password VARCHAR(255) NOT NULL,
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     CHECK (CHAR_LENGTH(password) >= 8)
+-- );
+-- CREATE TABLE categories (
+--     category_id INT PRIMARY KEY AUTO_INCREMENT,
+--     name VARCHAR(50) UNIQUE NOT NULL,
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     CHECK (CHAR_LENGTH(name) >= 3)
+-- );
+
+-- CREATE TABLE payment_methods (
+--     method_id INT PRIMARY KEY AUTO_INCREMENT,
+--     user_id INT NOT NULL,
+--     name VARCHAR(50) NOT NULL,
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     CHECK (CHAR_LENGTH(name) >= 3),
+--     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+-- );
+-- CREATE TABLE expenses (
+--     expense_id INT PRIMARY KEY AUTO_INCREMENT,
+--     user_id INT NOT NULL,
+--     category_id INT NOT NULL,
+--     method_id INT,  -- optional
+--     amount DECIMAL(10,2) NOT NULL,
+--     description TEXT,
+--     spent_on DATE NOT NULL,
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+--     FOREIGN KEY (category_id) REFERENCES categories(category_id) ON DELETE RESTRICT,
+--     FOREIGN KEY (method_id) REFERENCES payment_methods(method_id) ON DELETE SET NULL
+-- );
+-- CREATE TABLE budgets (
+--     budget_id INT PRIMARY KEY AUTO_INCREMENT,
+--     user_id INT NOT NULL,
+--     category_id INT NOT NULL,
+--     year YEAR NOT NULL,
+--     month INT NOT NULL,  -- 1 to 12
+--     limit_amount DECIMAL(10,2) NOT NULL,
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+--     FOREIGN KEY (category_id) REFERENCES categories(category_id) ON DELETE RESTRICT,
+--     UNIQUE KEY unique_budget (user_id, category_id, year, month)
+-- );
+-- CREATE TABLE recurring_expenses (
+--     rec_id INT PRIMARY KEY AUTO_INCREMENT,
+--     user_id INT NOT NULL,
+--     category_id INT NOT NULL,
+--     amount DECIMAL(10,2) NOT NULL,
+--     description TEXT,
+--     frequency ENUM('daily','weekly','monthly','yearly') NOT NULL,
+--     next_due DATE NOT NULL,
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+--     FOREIGN KEY (category_id) REFERENCES categories(category_id) ON DELETE RESTRICT
+-- );
