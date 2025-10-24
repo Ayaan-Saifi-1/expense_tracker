@@ -77,7 +77,7 @@ def logout():
  session.pop('logged_in',None)
  session.pop('user_id',None)
  session.pop('username',None)
- return redirect(url_for('login'))
+ return render_template("index.html")
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
