@@ -1,0 +1,7 @@
+body{
+    font-family: sans-serif !important;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    color: #212121; 
+    text-align: center;
+    margin-top: 200px;
+}

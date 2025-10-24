@@ -1,17 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expense Tracker | Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>HELLO {{username}}</h1>
-    <h1><a href="{{url_for('login')}}">login</a></h1>
-    <h1><a href="{{url_for('logout')}}">logout</a></h1>
-    <h1><a href="{{url_for('signup')}}">signup</a></h1>
-    <h1><a href="{{url_for('view_expense')}}">view_expenses</a></h1>
-    <h1><a href="{{url_for('add_expense')}}">add_expenses</a></h1>
-   
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="bg-indigo-600 text-white px-6 py-4 flex justify-between items-center shadow-md">
+    <div class="text-2xl font-bold">Expense Tracker</div>
+    <ul class="flex gap-6">
+      <li><a href="{{ url_for('view_expense') }}" class="hover:text-indigo-200 transition">View Expenses</a></li>
+      <li><a href="{{ url_for('add_expense') }}" class="hover:text-indigo-200 transition">Add Expense</a></li>
+      <li><a href="{{ url_for('logout') }}" class="hover:text-indigo-200 transition">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Welcome Section -->
+  <section class="max-w-3xl mx-auto text-center mt-16 px-4">
+    <h1 class="text-4xl font-bold text-indigo-700 mb-4">Welcome, {{ username }}!</h1>
+    <p class="text-lg text-gray-600">
+      Manage your daily spending effortlessly. Track where your money goes, add new expenses, and stay on top of your budget.
+    </p>
+  </section>
+
+  <!-- Action Buttons -->
+  <div class="flex flex-wrap justify-center gap-6 mt-10">
+    <a href="{{ url_for('view_expense') }}" class="px-6 py-3 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition">View Expenses</a>
+    <a href="{{ url_for('add_expense') }}" class="px-6 py-3 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition">Add Expense</a>
+    <a href="{{ url_for('logout') }}" class="px-6 py-3 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition">Logout</a>
+  </div>
+
+  <!-- Info Section -->
+  <section class="max-w-4xl mx-auto mt-16 bg-white p-8 rounded-xl shadow-md">
+    <h2 class="text-2xl font-semibold text-indigo-700 mb-3">Why Use Expense Tracker?</h2>
+    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+      <li>📊 Keep track of your daily and monthly spending.</li>
+      <li>💰 Get insights into where your money goes.</li>
+      <li>🧾 Add, edit, and review all your expenses easily.</li>
+      <li>📅 View your spending history in one place.</li>
+    </ul>
+  </section>
+
+  <footer class="mt-16 text-center text-gray-500 text-sm py-6">
+    © 2025 Expense Tracker | Built for smart money management
+  </footer>
+
 </body>
 </html>

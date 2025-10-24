@@ -67,14 +67,17 @@ def login():
 
 @app.route("/home") 
 def home():
+   if 'user_id' not in session:
+      return redirect(url_for('login'))
    return render_template("home.html",username=session.get('username'))
 
 
 @app.route("/logout")
 def logout():
  session.pop('logged_in',None)
+ session.pop('user_id',None)
  session.pop('username',None)
- return redirect(url_for('login'))
+ return render_template("index.html")
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
@@ -95,7 +98,7 @@ def signup():
             msg = "User already exists. Try again."
         else:
             try:
-                cursor.execute("INSERT INTO users VALUES (DEFAULT, %s, %s, %s, DEFAULT,%s)", (username, email, password,name))
+                cursor.execute("INSERT INTO users VALUES (DEFAULT, %s, %s, %s,%s,DEFAULT)", (username, email, password,name))
                 conn.commit()
                 return redirect(url_for('login'))
             except mysql.connector.Error as err:
