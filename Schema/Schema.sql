@@ -6,6 +6,7 @@
 --     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 --     CHECK (CHAR_LENGTH(password) >= 8)
 -- );
+--
 -- CREATE TABLE categories (
 --     category_id INT PRIMARY KEY AUTO_INCREMENT,
 --     name VARCHAR(50) UNIQUE NOT NULL,
